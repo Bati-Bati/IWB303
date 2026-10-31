@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#e5e5Ff">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FirstAid Hero"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#333377"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+    <!--استعملنا خط bold وحجم كبير لوضوح القراءة بسرعة بالطوارئ،
+     مع خلفية مائلة للأزرق لأنه لون الهدوء -->
+
+    <!-- شريط البحث -->
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:hint="ابحث عن حالة طارئة (مثال: لدغ، حروق...)"
+        android:inputType="text"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- حالات اسعافيه -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="حالات إسعافية شائعة:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#333377"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- ليستة الحالات -->
+    <ListView
+        android:id="@+id/emergenciesListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

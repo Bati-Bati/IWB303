@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="أرقام الطوارئ"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#D32F2F"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- أدخال رقم جديد -->
+    <EditText
+        android:id="@+id/contactNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="ادخل اسم جهة الاتصال"
+        android:inputType="text"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/contactPhoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="ادخل رقم الهاتف"
+        android:gravity="right"
+        android:inputType="phone"
+        android:textSize="14sp"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/saveContactButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="حفظ الرقم للطوارئ"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp"/>
+
+    <ListView
+        android:id="@+id/contactsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
