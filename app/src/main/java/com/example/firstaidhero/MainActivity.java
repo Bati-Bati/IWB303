@@ -1,28 +1,27 @@
 package com.example.firstaidhero;
 
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import android.content.Intent;
-import android.database.Cursor;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.firstaidhero.adapters.EmergencyAdapter;
+import com.example.firstaidhero.models.Emergency;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseHelper dbHelper;
-    EditText searchEditText;
-    ListView emergenciesListView;
+    private DatabaseHelper dbHelper;
+    private EditText searchEditText;
+    private RecyclerView emergenciesRecyclerView;
+    private Button btnQuickDialer, btnCaseLogs, btnReports;
+    private EmergencyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +29,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = new DatabaseHelper(this);
-        searchEditText = findViewById(R.id.searchEditText);
-        emergenciesListView = findViewById(R.id.emergenciesListView);
 
-        // عرض كل الحالات عند فتح التطبيق
+        searchEditText = findViewById(R.id.searchEditText);
+        emergenciesRecyclerView = findViewById(R.id.emergenciesRecyclerView);
+        btnQuickDialer = findViewById(R.id.btnQuickDialer);
+        btnCaseLogs = findViewById(R.id.btnCaseLogs);
+        btnReports = findViewById(R.id.btnReports);
+
+        // التنقل لشاشة أرقام الطوارئ
+        btnQuickDialer.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, EmergencyDialerActivity.class);
+            startActivity(intent);
+        });
+
+        // التنقل لشاشة توثيق الحالات المعالجة
+        btnCaseLogs.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CaseLogActivity.class);
+            startActivity(intent);
+        });
+
+        // التنقل لشاشة الإحصائيات والتقارير
+        btnReports.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ReportsActivity.class);
+            startActivity(intent);
+        });
+
+        // إعداد الـ RecyclerView
+        emergenciesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new EmergencyAdapter(emergency -> {
+            Intent intent = new Intent(MainActivity.this, ActionStepsActivity.class);
+            intent.putExtra("CASE_ID", emergency.getCaseId());
+            startActivity(intent);
+        });
+        emergenciesRecyclerView.setAdapter(adapter);
+
+        // تحميل الحالات الأولية
         loadEmergencies("");
 
-        // تفعيل البحث الفوري (Instant Search) أثناء الكتابة في شريط البحث
+        // البحث الفوري التفاعلي (Instant Search)
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -49,33 +79,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-
-        // الانتقال لشاشة الخطوات عند النقر على أي حالة
-        emergenciesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, ActionStepsActivity.class);
-                intent.putExtra("CASE_ID", (int) id);
-                startActivity(intent);
-            }
-        });
     }
 
     private void loadEmergencies(String keyword) {
-        Cursor cursor = keyword.isEmpty() ? dbHelper.getAllEmergencies() : dbHelper.searchEmergencies(keyword);
+        List<Emergency> emergencies;
+        if (keyword.trim().isEmpty()) {
+            emergencies = dbHelper.getAllEmergencies();
+        } else {
+            emergencies = dbHelper.searchEmergencies(keyword);
+        }
+        adapter.setEmergencies(emergencies);
+    }
 
-        String[] fromColumns = {"title", "symptoms"};
-        int[] toViews = {android.R.id.text1, android.R.id.text2};
-
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
-                this,
-                android.R.layout.simple_list_item_2,
-                cursor,
-                fromColumns,
-                toViews,
-                0
-        );
-
-        emergenciesListView.setAdapter(adapter);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
     }
 }

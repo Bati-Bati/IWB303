@@ -24,6 +24,15 @@
         <activity
             android:name=".ActionStepsActivity"
             android:exported="false" />
+        <activity
+            android:name=".EmergencyDialerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CaseLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

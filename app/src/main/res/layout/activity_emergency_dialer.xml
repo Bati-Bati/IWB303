@@ -3,50 +3,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#F4F6FB">
+
+    <!-- شريط علوي مع زر الرجوع -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="14dp">
+
+        <Button
+            android:id="@+id/dialerBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="← رجوع"
+            android:textSize="13sp"
+            android:textColor="#1A237E"
+            android:backgroundTint="#E8EAF6"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="أرقام الطوارئ المعتمدة 🚨"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#D32F2F"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- بطاقة إضافة رقم طوارئ جديد -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp"
+        android:background="@drawable/bg_card_emergency"
+        android:layout_marginBottom="14dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إضافة جهة اتصال طوارئ مخصصة:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/contactNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:hint="اسم جهة الاتصال (مثال: طبيب العائلة)"
+            android:inputType="text"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_search_bar"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textColorHint="#9E9E9E"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/contactPhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:hint="رقم الهاتف (مثال: 0599000000)"
+            android:inputType="phone"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_search_bar"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textColorHint="#9E9E9E"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/saveContactButton"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="+ حفظ جهة الاتصال للطوارئ"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="أرقام الطوارئ"
-        android:textSize="20sp"
+        android:text="جهات اتصال الطوارئ المسجلة:"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="#D32F2F"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"/>
-
-    <!-- أدخال رقم جديد -->
-    <EditText
-        android:id="@+id/contactNameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="ادخل اسم جهة الاتصال"
-        android:inputType="text"
-        android:textSize="14sp"
+        android:textColor="#1A237E"
         android:layout_marginBottom="8dp"/>
 
-    <EditText
-        android:id="@+id/contactPhoneEditText"
+    <!-- قائمة الأرقام عبر RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contactsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="ادخل رقم الهاتف"
-        android:gravity="right"
-        android:inputType="phone"
-        android:textSize="14sp"
-        android:layout_marginBottom="12dp"/>
-
-    <Button
-        android:id="@+id/saveContactButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="حفظ الرقم للطوارئ"
-        android:backgroundTint="#4CAF50"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="16dp"/>
-
-    <ListView
-        android:id="@+id/contactsListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>

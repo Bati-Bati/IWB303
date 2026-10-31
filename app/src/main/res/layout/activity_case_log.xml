@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F4F6FB">
+
+    <!-- شريط علوي مع زر الرجوع -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <Button
+            android:id="@+id/logBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="← رجوع"
+            android:textSize="13sp"
+            android:textColor="#1A237E"
+            android:backgroundTint="#E8EAF6"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="سجل الحالات المعالجة 📝"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- نموذج إدخال حالة جديدة -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp"
+        android:background="@drawable/bg_card_emergency"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="توثيق إجراء إسعافي جديد:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/logDescriptionInput"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:hint="وصف الحالة (مثال: حرق ماء ساخن، كسر بالساعد)"
+            android:inputType="text"
+            android:paddingHorizontal="12dp"
+            android:background="@drawable/bg_search_bar"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textColorHint="#9E9E9E"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/logDateInput"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:hint="تاريخ الحالة (YYYY-MM-DD)"
+                android:focusable="false"
+                android:clickable="true"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/bg_search_bar"
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:textColorHint="#9E9E9E"/>
+
+            <Button
+                android:id="@+id/pickDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:text="📅 التاريخ"
+                android:textSize="12sp"
+                android:textColor="#1A237E"
+                android:backgroundTint="#E8EAF6"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/logProceduresInput"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="الإجراءات الإسعافية التي تم اتخاذها..."
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:padding="10dp"
+            android:background="@drawable/bg_search_bar"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textColorHint="#9E9E9E"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/saveLogButton"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="+ حفظ توثيق الحالة"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1A237E"/>
+    </LinearLayout>
+
+    <!-- شريط البحث في السجلات السابقة -->
+    <EditText
+        android:id="@+id/searchLogsInput"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:hint="ابحث في السجلات (بالتاريخ أو الوصف أو الإجراء)..."
+        android:inputType="text"
+        android:paddingHorizontal="14dp"
+        android:background="@drawable/bg_search_bar"
+        android:textSize="13sp"
+        android:textColor="#212121"
+        android:textColorHint="#9E9E9E"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- قائمة السجلات السابقة -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/logsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"/>
+
+</LinearLayout>

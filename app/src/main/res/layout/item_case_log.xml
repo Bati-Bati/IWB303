@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="14dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card_emergency">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/logDescriptionText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:text="وصف الحالة المعالجة"/>
+
+        <TextView
+            android:id="@+id/logDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#5C6BC0"
+            android:background="#E8EAF6"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="2026-10-31"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/logProceduresText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:lineSpacingExtra="3dp"
+        android:textColor="#37474F"
+        android:layout_marginBottom="8dp"
+        android:text="الإجراءات المتخذة: ..."/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/deleteLogButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="حذف السجل"
+            android:textSize="12sp"
+            android:textColor="#D32F2F"
+            android:backgroundTint="#FFEBEE"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F4F6FB">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- شريط علوي مع زر الرجوع -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
+
+            <Button
+                android:id="@+id/reportsBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="← رجوع"
+                android:textSize="13sp"
+                android:textColor="#1A237E"
+                android:backgroundTint="#E8EAF6"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="الإحصاءات والتقارير الطبية 📊"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- بطاقات ملخص الإحصائيات -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <!-- بطاقة إجمالي الحالات المخزنة -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:gravity="center"
+                android:background="@drawable/bg_card_emergency"
+                android:layout_marginEnd="6dp">
+
+                <TextView
+                    android:id="@+id/statTotalEmergencies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A237E"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="إجمالي الحالات"
+                    android:textSize="12sp"
+                    android:textColor="#757575"/>
+            </LinearLayout>
+
+            <!-- بطاقة الحالات الموثقة -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:gravity="center"
+                android:background="@drawable/bg_card_emergency"
+                android:layout_marginStart="6dp">
+
+                <TextView
+                    android:id="@+id/statTotalLogs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حالات عولجت"
+                    android:textSize="12sp"
+                    android:textColor="#757575"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- تفصيل تصنيف الحالات حسب الخطورة (GROUP BY danger_level) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/bg_card_emergency"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="تصنيف الحالات حسب مستوى الخطورة:"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- حرج -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حالات حرجة (حرج):"
+                    android:textSize="14sp"
+                    android:textColor="#212121"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/statCriticalCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_danger_badge"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="4dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE"
+                android:layout_marginVertical="6dp"/>
+
+            <!-- متوسط -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="حالات متوسطة الخطورة (متوسط):"
+                    android:textSize="14sp"
+                    android:textColor="#212121"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/statModerateCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="#FFA000"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="4dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- ملخص توثيق الحالات الأحدث -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ملخص الحالات المعالجة الحديثة:"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/recentLogsSummaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:background="@drawable/bg_card_emergency"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#37474F"
+            android:text="جاري تحميل السجلات..."/>
+
+        <!-- زر الانتقال لسجل الحالات الكامل -->
+        <Button
+            android:id="@+id/openCaseLogsFromReportsButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="فتح سجل الحالات المعالجة الكامل 📝"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1A237E"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

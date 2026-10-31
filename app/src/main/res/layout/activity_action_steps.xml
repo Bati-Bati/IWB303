@@ -2,69 +2,113 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:fillViewport="true"
+    android:background="#F4F6FB">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- عنوان الحالة الإسعافية -->
-        <TextView
-            android:id="@+id/titleTextView"
+        <!-- شريط علوي مع زر الرجوع -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="عنوان الحالة"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#D32F2F"
-            android:layout_marginBottom="8dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
 
-        <!-- مستوى الخطورة -->
-        <TextView
-            android:id="@+id/dangerLevelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="مستوى الخطورة: حرِج"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:background="#FF5722"
-            android:padding="6dp"
-            android:layout_marginBottom="12dp"/>
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="← رجوع"
+                android:textSize="13sp"
+                android:textColor="#1A237E"
+                android:backgroundTint="#E8EAF6"/>
 
-        <!-- الأعراض المصاحبة -->
-        <TextView
-            android:id="@+id/symptomsTextView"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="خطوات الإسعاف السريع"
+                android:textSize="14sp"
+                android:textColor="#757575"/>
+        </LinearLayout>
+
+        <!-- بطاقة تفاصيل الحالة -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="الأعراض: ..."
-            android:textSize="16sp"
-            android:textColor="#555555"
-            android:layout_marginBottom="16dp"/>
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/bg_card_emergency"
+            android:layout_marginBottom="16dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="16dp"/>
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="عنوان الحالة"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/dangerLevelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مستوى الخطورة: حرِج"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bg_danger_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/symptomsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="الأعراض: ..."
+                android:textSize="15sp"
+                android:lineSpacingExtra="3dp"
+                android:textColor="#424242"/>
+        </LinearLayout>
 
         <!-- عنوان للخطوات -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="خطوات الإسعاف الأولي:"
-            android:textSize="18sp"
+            android:text="الخطوات الإسعافية بالترتيب:"
+            android:textSize="17sp"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginBottom="8dp"/>
+            android:textColor="#1A237E"
+            android:layout_marginBottom="10dp"/>
 
-        <!-- قائمة الخطوات  -->
-        <ListView
-            android:id="@+id/stepsListView"
+        <!-- حاوية ديناميكية للخطوات بدون مشاكل التمرير -->
+        <LinearLayout
+            android:id="@+id/stepsContainer"
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <!-- زر اتصال طوارئ سريع في حال تفاقم الوضع -->
+        <Button
+            android:id="@+id/callEmergencyInStepsButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="اتصال بالإسعاف (101) 📞"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D32F2F"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
 </ScrollView>

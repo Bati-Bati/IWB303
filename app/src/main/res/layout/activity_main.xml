@@ -4,47 +4,96 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#e5e5Ff">
+    android:background="#F4F6FB">
 
-    <TextView
+    <!-- شريط علوي مع اسم التطبيق -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FirstAid Hero"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#333377"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"/>
-    <!--استعملنا خط bold وحجم كبير لوضوح القراءة بسرعة بالطوارئ،
-     مع خلفية مائلة للأزرق لأنه لون الهدوء -->
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
 
-    <!-- شريط البحث -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FirstAid Hero 🩺"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"/>
+
+        <!-- زر أرقام الطوارئ السريع والبارز -->
+        <Button
+            android:id="@+id/btnQuickDialer"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="اتصال 🚨"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D32F2F"/>
+    </LinearLayout>
+
+    <!-- شريط الإجراءات السريعة (توثيق الحالات + الإحصائيات) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="14dp">
+
+        <Button
+            android:id="@+id/btnCaseLogs"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="📝 سجل الحالات"
+            android:textSize="12sp"
+            android:textColor="#1A237E"
+            android:backgroundTint="#E8EAF6"
+            android:layout_marginEnd="6dp"/>
+
+        <Button
+            android:id="@+id/btnReports"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="📊 الإحصاءات والتقارير"
+            android:textSize="12sp"
+            android:textColor="#1A237E"
+            android:backgroundTint="#E8EAF6"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <!-- شريط البحث الفوري -->
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="ابحث عن حالة طارئة (مثال: لدغ، حروق...)"
+        android:layout_height="52dp"
+        android:hint="ابحث عن حالة طارئة (مثال: لدغ، غصة، حروق...)"
         android:inputType="text"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        android:textSize="16sp"
-        android:layout_marginBottom="16dp"/>
+        android:paddingHorizontal="16dp"
+        android:background="@drawable/bg_search_bar"
+        android:textSize="14sp"
+        android:textColor="#212121"
+        android:textColorHint="#9E9E9E"
+        android:layout_marginBottom="12dp"/>
 
-    <!-- حالات اسعافيه -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="حالات إسعافية شائعة:"
-        android:textSize="18sp"
+        android:text="الحالات الإسعافية الطارئة الشائعة:"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="#333377"
+        android:textColor="#283593"
         android:layout_marginBottom="8dp"/>
 
-    <!-- ليستة الحالات -->
-    <ListView
-        android:id="@+id/emergenciesListView"
+    <!-- قائمة الحالات عبر RecyclerView الحديث -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/emergenciesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>

@@ -1,0 +1,20 @@
+## ==============================================================================
+## Template: local.properties.example
+## Copy or rename this file to "local.properties" if needed.
+## ==============================================================================
+## If you open this project in Android Studio, Android Studio will create
+## "local.properties" automatically for you with your correct local SDK path.
+##
+## If you are building from command line, copy this file to "local.properties"
+## and replace the path with your computer's Android SDK location:
+##
+## Windows:
+## sdk.dir=C\:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk
+##
+## macOS:
+## sdk.dir=/Users/YOUR_USERNAME/Library/Android/sdk
+##
+## Linux:
+## sdk.dir=/home/YOUR_USERNAME/Android/Sdk
+## ==============================================================================
+sdk.dir=C\:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk
