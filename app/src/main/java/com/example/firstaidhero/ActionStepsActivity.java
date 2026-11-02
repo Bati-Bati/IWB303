@@ -38,9 +38,20 @@ public class ActionStepsActivity extends AppCompatActivity {
 
         backButton.setOnClickListener(v -> finish());
 
+        // Dynamically fetch emergency contact number from DB
+        List<EmergencyContact> contacts = dbHelper.getAllContacts();
+        String emergencyNumber = "101";
+        String contactName = "الإسعاف";
+        if (contacts != null && !contacts.isEmpty()) {
+            emergencyNumber = contacts.get(0).getPhoneNumber();
+            contactName = contacts.get(0).getContactName();
+        }
+
+        final String finalEmergencyNumber = emergencyNumber;
+        callEmergencyInStepsButton.setText("اتصال بـ " + contactName + " (" + finalEmergencyNumber + ")");
         callEmergencyInStepsButton.setOnClickListener(v -> {
             Intent callIntent = new Intent(Intent.ACTION_DIAL);
-            callIntent.setData(Uri.parse("tel:101"));
+            callIntent.setData(Uri.parse("tel:" + finalEmergencyNumber));
             startActivity(callIntent);
         });
 
