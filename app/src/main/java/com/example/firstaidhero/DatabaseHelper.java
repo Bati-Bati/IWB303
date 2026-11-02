@@ -96,6 +96,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 output.flush();
                 Log.i(TAG, "Pre-populated database successfully copied from assets to " + dbPath);
+
+                // Set version explicitly on the newly copied database file to avoid triggering onUpgrade immediately
+                try (SQLiteDatabase db = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE)) {
+                    db.setVersion(DATABASE_VERSION);
+                } catch (Exception e) {
+                    Log.w(TAG, "Could not set database version on asset copy", e);
+                }
             } catch (IOException e) {
                 Log.e(TAG, "Failed to copy pre-populated database from assets, falling back to onCreate", e);
             }
@@ -133,11 +140,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_STEPS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EMERGENCIES);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CASE_LOGS);
-        onCreate(db);
+        // When upgrading, do not wipe if migrating from version 0/1 without checking
+        if (oldVersion < newVersion) {
+            db.setVersion(newVersion);
+        }
     }
 
     // ==========================================
