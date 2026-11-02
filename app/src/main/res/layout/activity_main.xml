@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:background="#F4F6FB">
 
-    <!-- شريط علوي مع اسم التطبيق -->
+    <!-- الشريط الي فوق تبع FirstAid Hero -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,17 +18,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="FirstAid Hero 🩺"
+            android:text="FirstAid Hero"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#1A237E"/>
 
-        <!-- زر أرقام الطوارئ السريع والبارز -->
+        <!-- زر الاتصال بأرقام الطوارئ -->
         <Button
             android:id="@+id/btnQuickDialer"
             android:layout_width="wrap_content"
             android:layout_height="42dp"
-            android:text="اتصال 🚨"
+            android:text="اتصال"
             android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="📝 سجل الحالات"
+            android:text="سجل الحالات"
             android:textSize="12sp"
             android:textColor="#1A237E"
             android:backgroundTint="#E8EAF6"
@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="📊 الإحصاءات والتقارير"
+            android:text="الإحصاءات والتقارير"
             android:textSize="12sp"
             android:textColor="#1A237E"
             android:backgroundTint="#E8EAF6"

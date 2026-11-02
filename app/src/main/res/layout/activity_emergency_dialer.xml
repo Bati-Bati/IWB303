@@ -27,14 +27,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="أرقام الطوارئ المعتمدة 🚨"
+            android:text="أرقام الطوارئ المعتمدة"
             android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="#D32F2F"
             android:gravity="center"/>
     </LinearLayout>
 
-    <!-- بطاقة إضافة رقم طوارئ جديد -->
+    <!-- إضافة رقم جديد -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,6 +52,7 @@
             android:textColor="#1A237E"
             android:layout_marginBottom="8dp"/>
 
+        <!-- كتابة اسم جهة الاتصال -->
         <EditText
             android:id="@+id/contactNameEditText"
             android:layout_width="match_parent"
@@ -65,11 +66,12 @@
             android:textColorHint="#9E9E9E"
             android:layout_marginBottom="8dp"/>
 
+        <!-- إضافة الرقم -->
         <EditText
             android:id="@+id/contactPhoneEditText"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:hint="رقم الهاتف (مثال: 0599000000)"
+            android:hint="رقم الهاتف (مثال: 0900000000)"
             android:inputType="phone"
             android:paddingHorizontal="12dp"
             android:background="@drawable/bg_search_bar"
@@ -78,6 +80,7 @@
             android:textColorHint="#9E9E9E"
             android:layout_marginBottom="10dp"/>
 
+        <!-- زر الحفظ -->
         <Button
             android:id="@+id/saveContactButton"
             android:layout_width="match_parent"

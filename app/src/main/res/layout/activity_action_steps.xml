@@ -61,7 +61,7 @@
                 android:id="@+id/dangerLevelTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="مستوى الخطورة: حرِج"
+                android:text="مستوى الخطورة: حرج"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -97,12 +97,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"/>
 
-        <!-- زر اتصال طوارئ سريع في حال تفاقم الوضع -->
+        <!-- زر اتصال طوارئ سريع -->
         <Button
             android:id="@+id/callEmergencyInStepsButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="اتصال بالإسعاف (101) 📞"
+            android:text="اتصال بالإسعاف (110) "
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"

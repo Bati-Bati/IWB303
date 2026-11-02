@@ -38,7 +38,7 @@
         android:id="@+id/callContactButton"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
-        android:text="اتصال 📞"
+        android:text="اتصال"
         android:textSize="12sp"
         android:textColor="#FFFFFF"
         android:backgroundTint="#43A047"

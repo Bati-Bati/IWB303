@@ -141,13 +141,13 @@
                     android:id="@+id/statCriticalCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF"
                     android:background="@drawable/bg_danger_badge"
                     android:paddingHorizontal="14dp"
-                    android:paddingVertical="4dp"/>
+                    android:paddingVertical="4dp"
+                    android:text="0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <View
@@ -213,7 +213,7 @@
             android:id="@+id/openCaseLogsFromReportsButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="فتح سجل الحالات المعالجة الكامل 📝"
+            android:text="فتح سجل الحالات المعالجة الكامل "
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
