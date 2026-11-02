@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firstaidhero.models.Emergency;
+import com.example.firstaidhero.models.EmergencyContact;
 import com.example.firstaidhero.models.EmergencyStep;
 
 import java.util.List;
