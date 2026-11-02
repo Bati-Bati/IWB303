@@ -40,7 +40,7 @@ public class ActionStepsActivity extends AppCompatActivity {
 
         // Dynamically fetch emergency contact number from DB
         List<EmergencyContact> contacts = dbHelper.getAllContacts();
-        String emergencyNumber = "101";
+        String emergencyNumber = "110";
         String contactName = "الإسعاف";
         if (contacts != null && !contacts.isEmpty()) {
             emergencyNumber = contacts.get(0).getPhoneNumber();
