@@ -18,6 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
+
     private EditText searchEditText;
     private RecyclerView emergenciesRecyclerView;
     private Button btnQuickDialer, btnCaseLogs, btnReports;
